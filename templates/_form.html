@@ -1,0 +1,36 @@
+{% extends 'layout.html' %} {% load bootstrap4 %} {% block content %} {% if form %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 mt-5">
+            <div class="card mt-5">
+                <div class="card-header">
+                    {{ title }}
+                </div>
+                <div class="card-body">
+                    <form action="" enctype="multipart/form-data" method="post">
+                        {% csrf_token %} {% bootstrap_form form %}
+                        <button type="submit" class="btn btn-primary">
+                            {{ title_button }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 mt-5">
+            <div class="card mt-5">
+                <div class="card-header">
+                    폼 객체 없음 ㅅㄱ
+                </div>
+                <div class="card-body">
+                    폼 객체를 등록하세요! 제발~
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %} {% endblock %}
