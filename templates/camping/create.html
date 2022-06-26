@@ -1,5 +1,29 @@
-{% extends 'layout.html' %} 
-
-{% block content %}
-{% include '_form.html' with title="포스트 작성" title_button="확인"%}
+{% extends 'layout.html' %} {% load bootstrap4 %} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 mt-5">
+      <div class="card mt-5">
+        <div class="card-header">포스트 생성</div>
+        <div class="card-body">
+          <form action="" enctype="multipart/form-data" method="post">
+            {% csrf_token %} {% bootstrap_form form %}
+            <div class="custom-file mb-3">
+              <input
+                type="file"
+                class="custom-file-input"
+                id="customFile"
+                name="images"
+                multiple
+              />
+              <label class="custom-file-label" for="customFile"
+                >Choose file</label
+              >
+            </div>
+            <button type="submit" class="btn btn-primary">확인</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

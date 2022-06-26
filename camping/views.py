@@ -4,12 +4,14 @@ from .forms import (
     PostForm,
 )
 
-from .models import Post
+from .models import Post, Photos
 
 def index(request):
     post_list = Post.objects.all()
+    image_list = Photos.objects.all()
     context = {
         "post_list" : post_list,
+        "image_list" : image_list,
     }
     return render(request, "camping/index.html", context)
 
@@ -22,6 +24,12 @@ def create(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+
+            for image in request.FILES.getlist("images"):
+                photo = Photos()
+                photo.post = post
+                photo.image = image
+                photo.save()
             return redirect("camping:index")
         
     else:

@@ -31,3 +31,7 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
+
+.bg-light-grey {
+  background-color: #e9ecef;
+}

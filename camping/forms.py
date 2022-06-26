@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from .models import Post
 
 
-class PostForm(forms.ModelForm):
+class PostForm(forms.ModelForm):    
     visited_at = forms.CharField(label="언제 갔니?", 
                                  widget=forms.TextInput(
                                      attrs = {
