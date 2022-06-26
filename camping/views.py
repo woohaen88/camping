@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import (
-    PostForm,
+    PostForm, 
 )
 
 from .models import Post, Photos
@@ -30,12 +30,13 @@ def create(request):
                 photo.post = post
                 photo.image = image
                 photo.save()
+
             return redirect("camping:index")
         
     else:
         form = PostForm()
         context = {
-            "form" : form
+            "form" : form,
         }
         return render(request, "camping/create.html", context)
 

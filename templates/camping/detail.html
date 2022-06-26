@@ -1,26 +1,15 @@
-{% extends 'layout.html' %} 
-{% block content %}
+{% extends 'layout.html' %} {% load customtags %} {% block content %}
 <div class="container">
   <div class="row">
     <div class="col-md-12 order-md-1 mt-5 py-5">
       <form class="needs-validation" novalidate="">
         <div class="row">
+          <h1>{{ post.title }}</h1>
           {% include 'includes/carousel.html' %}
-
-          <!-- 캠핑장 이름 -->
-          <div class="col-md-6 mb-3 ">
-            <label for="firstName">캠핑장이름</label>
-            <div
-              class="border rounded bg-light-grey"
-              style="height: 2.5rem; background-color: #e9ecef"
-            >
-              <div class="p-2 ml-auto">{{ post.title }}</div>
-            </div>
-          </div>
 
           <!-- 방문일자 -->
           <div class="col-md-6 mb-3">
-            <label for="lastName">방문일자</label>
+            <label for="visited_at">방문일자</label>
             <div
               class="border rounded bg-light-grey"
               style="height: 2.5rem; background-color: #e9ecef"
@@ -29,27 +18,106 @@
             </div>
             <div class="invalid-feedback">Valid last name is required.</div>
           </div>
-        </div>
 
-        <!-- 리뷰 -->
-        <div class="mb-3">
-          <label for="review">리뷰</label>
-          <div
-            class="border rounded bg-light-grey"
-            style="height: 2.5rem; background-color: #e9ecef"
-          >
-            <div class="p-2 ml-auto">{{ post.review }}</div>
+          <!-- 차박 -->
+          <div class="col-md-6 mb-3">
+            <label for="kind_of_camping">캠핑종류</label>
+            <div
+              class="border rounded bg-light-grey"
+              style="height: 2.5rem; background-color: #e9ecef"
+            >
+              <div class="p-2 ml-auto">
+                {{ post.kind_of_camping | kind_of_camping }}
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- 캠핑종류 -->
-        <div class="mb-3">
-          <label for="address">캠핑종류</label>
-          <div
-            class="border rounded bg-light-grey"
-            style="height: 2.5rem; background-color: #e9ecef"
-          >
-            <div class="p-2 ml-auto">{{ post.kind_of_camping }}</div>
+        <!-- 리뷰 -->
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="review">리뷰</label>
+            <div
+              class="border rounded bg-light-grey"
+              style="height: 5rem; background-color: #e9ecef"
+            >
+              <div class="p-2 ml-auto">{{ post.review }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 캠퍼는 조용하니, 충전은 가능하니 -->
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="quiet">캠퍼는 조용하니?</label>
+            <div
+              class="border rounded bg-light-grey"
+              style="height: 2.5rem; background-color: #e9ecef"
+            >
+              <div class="p-2 ml-auto">{{ post.quiet | quiet_choice }}</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="site_parking">사이트에 주차 가능???</label>
+            <div
+              class="border rounded bg-light-grey"
+              style="height: 2.5rem; background-color: #e9ecef"
+            >
+              <div class="p-2 ml-auto">
+                {{ post.site_parking | site_parking }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 콘센트 접지여부, 반려동물 가능? -->
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="ground">콘센트 접지여부</label>
+            <div
+              class="border rounded bg-light-grey"
+              style="height: 2.5rem; background-color: #e9ecef"
+            >
+              <div class="p-2 ml-auto">{{ post.ground | ground_choice }}</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="animal">반려동물 가능?</label>
+            <div
+              class="border rounded bg-light-grey"
+              style="height: 2.5rem; background-color: #e9ecef"
+            >
+              <div class="p-2 ml-auto">{{ post.animal | animal_choice }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 불멍 가능?, 뷰 -->
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="ground">불멍 가능?</label>
+            <div
+              class="border rounded bg-light-grey"
+              style="height: 2.5rem; background-color: #e9ecef"
+            >
+              <div class="p-2 ml-auto">
+                {{ post.camp_fire | camp_fire_choice }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="camp_view">뷰 종류는?</label>
+            <div
+              class="border rounded bg-light-grey"
+              style="height: 2.5rem; background-color: #e9ecef"
+            >
+              <div class="p-2 ml-auto">
+                {{ post.camp_view | camp_view_choice }}
+              </div>
+            </div>
           </div>
         </div>
       </form>
