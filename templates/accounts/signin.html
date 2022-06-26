@@ -1,5 +1,30 @@
 {% extends 'layout.html' %} 
-
+{% load bootstrap4 %}
 {% block content %}
-{% include '_form.html' with title="로그인" title_button="로그인"%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 mt-5">
+            <div class="card mt-5">
+                <div class="card-header">
+                    로그인
+                </div>
+                <div class="card-body">
+                    <form action="" enctype="multipart/form-data" method="post">
+                        {% csrf_token %} {% bootstrap_form form %}
+                        <button type="submit" class="btn btn-primary">
+                            로그인
+                        </button>
+
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="{% url 'accounts:signup' %}">
+    <button type="submit" class="btn btn-primary">
+        회원가입
+    </button>
+</a>
 {% endblock %}
